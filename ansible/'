@@ -1,0 +1,15 @@
+---
+- hosts: demo
+  become: yes
+  vars_files:
+        - ../roles/logstash_install/vars/main.yml
+  roles:
+  - ./roles/logstash_install
+- hosts: elk-server
+  become: yes
+  vars_files:
+        - ../create_index/vars/main.yml
+  roles:
+  - ./roles/create_index
+
+

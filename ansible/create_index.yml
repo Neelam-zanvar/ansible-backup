@@ -1,0 +1,6 @@
+---
+- name: create index in elasticsearch
+  hosts: elk-server
+  tasks:
+    - name: create index
+      script: ./create_index.sh 

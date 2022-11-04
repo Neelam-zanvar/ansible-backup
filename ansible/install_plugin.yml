@@ -1,0 +1,15 @@
+---
+- name: Install jenkins logstash plugin 
+  hosts: demo
+  tasks:
+    - name: Enable the plugin
+      jenkins_plugin:
+         name: Logstash
+         url_username: neelam 
+         url_password: minutus
+    - name: Restart Jenkins if required
+      service:
+        name: jenkins
+        state: restarted
+
+

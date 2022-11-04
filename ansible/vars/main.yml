@@ -1,0 +1,6 @@
+---
+# vars file for logstash_install
+index_name: jenkinelk_logs
+kibana_server_ip: 43.204.205.20
+elk_user: elastic
+elk_password: minutus  

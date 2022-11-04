@@ -1,0 +1,16 @@
+---
+# tasks file for logstash_install   
+- name: Enable the plugin
+  jenkins_plugin:
+     name: Logstash
+     url_username: neelam
+     url_password: minutus
+- name: Logstash plugin configuration
+  template:
+     src: ../templates/jenkins.plugins.logstash.LogstashConfiguration.xml
+     dest: /var/lib/jenkins
+- name: Restart Jenkins if required
+  service:
+     name: jenkins
+     state: restarted
+

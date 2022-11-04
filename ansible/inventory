@@ -1,0 +1,2 @@
+demo ansible_user=ubuntu
+elk-server ansible_user=ec2-user
