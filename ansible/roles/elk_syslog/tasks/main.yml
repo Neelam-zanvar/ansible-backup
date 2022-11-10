@@ -1,0 +1,58 @@
+---
+# tasks file for elk_syslog
+---
+# tasks file for jenkins_syslog
+- name: configure logstash
+  ansible.builtin.blockinfile:
+    path: /etc/logstash/conf.d/first-pipeline.conf
+      #marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    insertafter: "output {"
+    block: |
+       if [type] == "elasticsearch_syslog" {
+          elasticsearch {
+                hosts => ["43.204.205.20:9200"]
+
+                user => "elastic"
+                password => "minutus"
+
+                action => "index"
+                index => "elasticsearch_syslog%{+YYYY.MM.dd}"
+         }
+       }
+       if [type] == "kibana_syslog" {
+          elasticsearch {
+                hosts => ["43.204.205.20:9200"]
+
+                user => "elastic"
+                password => "minutus"
+
+                action => "index"
+                index => "kibana_syslog%{+YYYY.MM.dd}"
+         }
+       }
+       if [type] == "logstash_syslog" {
+          elasticsearch {
+                hosts => ["43.204.205.20:9200"]
+
+                user => "elastic"
+                password => "minutus"
+
+                action => "index"
+                index => "logstash_syslog%{+YYYY.MM.dd}"
+         }
+       }
+       if [type] == "filebeat_syslog" {
+          elasticsearch {
+                hosts => ["43.204.205.20:9200"]
+
+                user => "elastic"
+                password => "minutus"
+
+                action => "index"
+                index => "filebeat_syslog%{+YYYY.MM.dd}"
+         }
+       }
+
+- name: ensure logstash is running
+  systemd: state=started name=logstash
+

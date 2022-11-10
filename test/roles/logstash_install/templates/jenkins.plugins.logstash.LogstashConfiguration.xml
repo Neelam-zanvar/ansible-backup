@@ -3,7 +3,7 @@
   <logstashIndexer class="jenkins.plugins.logstash.configuration.ElasticSearch">
 	  <username>{{ elk_user }}</username>
 	  <password>{{ elk_password }}</password>
-	  <uri>http://{{ elk_ip }}:9200/{{ index_name }}/_doc</uri>
+    <uri>http://54.234.246.227:9200/{{ index_name }}/_doc</uri>
     <mimeType>application/json</mimeType>
     <customServerCertificateId></customServerCertificateId>
   </logstashIndexer>

@@ -1,6 +1,9 @@
 ---
 # vars file for logstash_install
-index_name: jenkinelk_logs
-kibana_server_ip: 43.204.205.20
+index_name: jenkins_logs_ansible
+elk_ip: 43.204.205.20
+jenkins_ip: 3.6.252.213
 elk_user: elastic
-elk_password: minutus  
+elk_password: minutus
+jenkins_user: neelam
+jenkins_password: minutus  

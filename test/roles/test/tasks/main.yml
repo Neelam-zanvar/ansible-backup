@@ -1,0 +1,11 @@
+---
+#- name: print inventory hostname
+#  debug:
+#    var: inventory_hostname
+- name: print from variable
+  debug:
+    var: "{{ test }}"
+      #- name: print shell
+      #shell: echo {{ test }}
+- name: variable from script
+  script: ../files/test.sh  {{ inventory_hostname }} {{ index_name }} {{ elk_user }}

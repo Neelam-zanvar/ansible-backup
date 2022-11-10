@@ -1,0 +1,22 @@
+---
+# tasks file for jenkins_syslog
+- name: configure logstash
+  ansible.builtin.blockinfile:
+    path: /etc/logstash/conf.d/first-pipeline.conf
+      #marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    insertafter: "output {"
+    block: |
+       if [type] == "jenkins-server" {
+          elasticsearch {
+                hosts => ["{{ elk_ip }}:9200"]
+
+                user => "{{ elk_user }}"
+                password => "{{ elk_password }}"
+
+                action => "index"
+                index => "jenkins_syslog%{+YYYY.MM.dd}"
+         }
+       }
+- name: ensure logstash is running
+  systemd: state=started name=logstash
+

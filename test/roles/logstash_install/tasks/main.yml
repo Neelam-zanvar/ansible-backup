@@ -3,8 +3,8 @@
 - name: Enable the plugin
   jenkins_plugin:
      name: Logstash
-     url_username: "{{ jenkins_user }}"
-     url_password: "{{ jenkins_password }}"
+     url_username: {{ jenkins_user }}
+     url_password: {{ jenkins_password }}
 - name: Logstash plugin configuration
   template:
      src: ../templates/jenkins.plugins.logstash.LogstashConfiguration.xml
